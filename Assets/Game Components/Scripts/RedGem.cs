@@ -1,13 +1,19 @@
 
 public class RedGem : Gem
 {
-    public bool EndGame(float levelPlayer)
+    public override bool PlayerInteract(Player player)
     {
-        if (levelPlayer >= _levelGem)
+        if (player.LevelPlayer >= _levelGem)
         {
             gameObject.SetActive(false);
+            player.IncreaseStonesEaten();
+            player.TransitResults();
+            Destroy(player.gameObject);
             return true;
         }
-        else return false;
+        else
+        {
+            return false;
+        }
     }
 }

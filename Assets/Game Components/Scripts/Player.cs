@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
 
     private float _levelPlayer;
 
+    public float LevelPlayer => _levelPlayer;
+
     private int _eatedStones;
 
     private Camera _mainCamera;
@@ -57,34 +59,10 @@ public class Player : MonoBehaviour
 
             if (gemComponent != null)
             {
-                if (gemComponent is YellowGem yellowGem)
+                if (gemComponent.PlayerInteract(this))
                 {
-                    if (yellowGem.PlayerGetsBigger(transform, _levelPlayer))
-                    {
-                        _eatedStones++;
-                        _gemCollector.GemEated++;
-                    }
-
+                    _gemCollector.GemEated++;
                     UpdateLevelPlayer();
-                }
-                else if(gemComponent is RedGem redGem)
-                {
-                    if (redGem.EndGame(_levelPlayer))
-                    {
-                        _gemCollector.GemEated++;
-                        _eatedStones++;
-                        TransitResults();
-                        Destroy(gameObject);
-                    }
-                }
-                else if(gemComponent is BlueGem blueGem)
-                {
-                    if (blueGem.SpliteStoneEater(gameObject, _levelPlayer))
-                    {
-                        _gemCollector.GemEated++;
-                        _eatedStones++;
-                        UpdateLevelPlayer();
-                    }
                 }
             }
         }
@@ -95,7 +73,12 @@ public class Player : MonoBehaviour
         _levelPlayer = transform.localScale.x + _multiScale;
     }
 
-    private void TransitResults()
+    public void IncreaseStonesEaten()
+    {
+        _eatedStones++;
+    }
+
+    public void TransitResults()
     {
         _memoryPlayerResult.AddLevelToField(_levelPlayer);
         _memoryPlayerResult.AddNameToField(_name);

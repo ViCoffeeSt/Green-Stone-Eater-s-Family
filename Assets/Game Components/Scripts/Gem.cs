@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class Gem : MonoBehaviour
+public abstract class Gem : MonoBehaviour
 {
     [Header("Animation")]
     [SerializeField] private float _moveDistance;
@@ -12,6 +12,9 @@ public class Gem : MonoBehaviour
     private Transform itemTransform;
 
     protected float _levelGem;
+
+    public abstract bool PlayerInteract(Player player);
+
 
     private void Start()
     {
