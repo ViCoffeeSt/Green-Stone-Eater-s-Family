@@ -65,15 +65,10 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (gemComponent.PlayerInteract(this))
-        {
-            _gemCollector.GemEated++;
-            _eatedStones++;
-            UpdateLevelPlayer();
-        }
+        gemComponent.PlayerInteract(this);
     }
 
-    private void UpdateLevelPlayer()
+    public void UpdateLevel()
     {
         _levelPlayer = transform.localScale.x + _multiScale;
     }
@@ -81,6 +76,7 @@ public class Player : MonoBehaviour
     public void IncreaseStonesEaten()
     {
         _eatedStones++;
+        _gemCollector.GemEated++;
     }
 
     public void TransitResults()

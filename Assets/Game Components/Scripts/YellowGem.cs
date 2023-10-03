@@ -7,18 +7,18 @@ public class YellowGem : Gem
     [SerializeField] private float _multiScale;
     [SerializeField] private float _changeScaleTime;
 
-    public override bool PlayerInteract(Player player)
+    public override void PlayerInteract(Player player)
     {
-        if (player.LevelPlayer > _levelGem)
+        if (player.LevelPlayer < _levelGem)
         {
-            player.transform.DOScale(player.transform.localScale * _multiScale, _changeScaleTime);
-            gameObject.SetActive(false);
-            player.IncreaseStonesEaten();
-            return true;
+            return;
         }
-        else
-        {
-            return false;
-        }
+
+        player.transform.DOScale(player.transform.localScale * _multiScale, _changeScaleTime);
+
+        gameObject.SetActive(false);
+
+        player.IncreaseStonesEaten();
+        player.UpdateLevel();
     }
 }

@@ -13,7 +13,7 @@ public abstract class Gem : MonoBehaviour
 
     protected float _levelGem;
 
-    public abstract bool PlayerInteract(Player player);
+    public abstract void PlayerInteract(Player player);
 
 
     private void Start()
