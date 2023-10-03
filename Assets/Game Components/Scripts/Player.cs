@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         _mainCamera = Camera.main;
         _name = _nameEaterAppers.GetUnusedRandomName();
         Debug.Log(_name);
