@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fc7b1a8d147fd614180bc2f35338548b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138,6 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nameQarakerField: {fileID: 4302996144878336240}
   _nameEaterAppers: {fileID: 11400000, guid: c4bb1c54da967fc44869852ff6d7127d, type: 2}
+  _gemCollector: {fileID: 0}
+  _multiScale: 0
 --- !u!54 &427743313161572727
 Rigidbody:
   m_ObjectHideFlags: 0
