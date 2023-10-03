@@ -53,18 +53,23 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Gem"))
+        if (!other.CompareTag("Gem"))
         {
-            Gem gemComponent = other.GetComponentInChildren<Gem>();
+            return;
+        }
 
-            if (gemComponent != null)
-            {
-                if (gemComponent.PlayerInteract(this))
-                {
-                    _gemCollector.GemEated++;
-                    UpdateLevelPlayer();
-                }
-            }
+        Gem gemComponent = other.GetComponentInChildren<Gem>();
+
+        if (gemComponent == null)
+        {
+            return;
+        }
+
+        if (gemComponent.PlayerInteract(this))
+        {
+            _gemCollector.GemEated++;
+            _eatedStones++;
+            UpdateLevelPlayer();
         }
     }
 
